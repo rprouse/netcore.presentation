@@ -41,12 +41,12 @@
                 </section>
 
                 <section>
-                    <h2>Performance</h2>
-                    <iframe id="performance" style="width:600px; height:500px;" data-chart></iframe>
+                    <h2>Blazing Fast</h2>
+                    <iframe id="performance" style="width:600px; height:400px;" data-chart></iframe>
                 </section>
 
                 <section>
-                    <h2>C# is a Modern Consistent Language</h2>
+                    <h2>Modern Consistent Languages</h2>
                     <ul>
                         <li>Async/Await</li>
                         <li>Lambdas</li>
@@ -56,24 +56,83 @@
                 </section>
 
                 <section>
-                    <h2>Unit Testing &amp; Dependency Injection built in</h2>
-                    <p>Helps you fall intot the pit of success</p>
+                    <h2>Unit Testing &amp; Dependency Injection</h2>
+                    <h3>Built in</h3>
+                    <p>Helps you fall into the pit of success</p>
                 </section>
 
                 <section>
-                    <h2>Visual Studio Code</h2>
-                </section>
-                <section>
-                    <h2>Install dotnet</h2>
+                    <section>
+                        <h2>Install dotnet</h2>
+                        <p>Instructions at <a href="https://www.microsoft.com/net/core" target="_blank">https://www.microsoft.com/net/core</a></p>
+                    </section>
+
+                    <section>
+                        <h2>Windows</h2>
+                        <h3>Visual Studio</h3>
+                        <p>Install <strong>Visual Studio 2015 Update 3</strong> and <strong>.NET Core Tooling for VS 2015</strong></p>
+
+                        <span class="fragment">
+                        <h3>Command Line</h3>
+                        <p>Install <strong>.NET Core SDK for Windows.</strong></p>
+                        </span>
+                    </section>
+
+                    <section>
+                        <h2>Ubuntu</h2>
+                        <h3>Add the dotnet apt-get feed</h3>
+                        <pre><code>
+sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
+sudo apt-key adv --keyserver apt-mo.trafficmanager.net --recv-keys 417A0893
+sudo apt-get update
+                        </code></pre>
+
+                        <span class="fragment">
+                        <h3>Install .NET Core SDK</h3>
+                        <pre><code>
+sudo apt-get install dotnet-dev-1.0.0-preview2-003121
+                        </code></pre>
+                        </span>
+                    </section>
+
+                    <section>
+                        <h2>Mac OS X</h2>
+                        <h3>Install pre-requisites</h3>
+                        <pre><code>
+brew update
+brew install openssl
+brew link --force openssl
+                        </code></pre>
+
+                        <span class="fragment">
+                        <h3>Install .NET Core SDK</h3>
+                        <p>Download and install <strong>.NET Core SDK for Mac OS X</strong></p>
+                        </span>
+                    </section>
+
+
+                    <section>
+                        <h2>Docker</h2>
+                        <h3>Run the container using "dotnet" base image</h3>
+                        <pre><code>docker run -it microsoft/dotnet:latest</code></pre>
+                    </section>
                 </section>
 
                 <section>
-                    <h2></h2>
+                    <h2>Your first app</h2>
+                    <pre><code>
+mkdir HelloWorld
+cd HelloWorld
+dotnet new
+                    </code></pre>
+                    <span class="fragment">
+                        <pre><code>dotnet run</code></pre>
+                    </span>
                 </section>
 
                 <section>
                     <h2>Enough already</h2>
-                    <h3>Show me the code</h3>
+                    <h3 class="fragment">Show me the code</h3>
                 </section>
 			</div>
 		</div>
@@ -82,6 +141,20 @@
 		<script src="js/reveal.js"></script>
 
 		<script>
+            var data = {
+                labels: ["ASP.NET Core", "Scala", "NodeJS", "ASP.NET 4.6"],
+                datasets: [
+                    {
+                    label: "Req/Sec",
+                    fillColor: "rgba(220,220,220,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [313001, 176509, 127017, 57843]
+                    }
+                ]
+            };
+
 			// More info https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				history: true,
@@ -102,22 +175,14 @@
                         selector : "#performance",
                         type : "bar",
 
-                        data : {
-
-                        labels: ["ASP.NET Core", "Scala", "NodeJS", "ASP.NET 4.6"],
-                        datasets: [
-                            {
-                            label: "Req/Sec",
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,0.8)",
-                            highlightFill: "rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
-                            data: [313001, 176509, 127017, 57843]
-                            }
-                        ]
-                        },
+                        data : data,
                         options : {
-                        responsive : true
+                            responsive : true
+                        },
+
+                        canvas : {
+                            width : "600",
+                            height : "400",
                         }
                     }
                     ]
