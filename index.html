@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>.NET Core and ASP.NET Core</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/moon.css">
@@ -24,8 +24,57 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+
+				<section>
+                    <h2>Microsoft announced .NET Core in 2014</h2>
+                    <h3 class="fragment">And you won't believe what happened next</h3>
+                </section>
+
+				<section>
+                    <h2>Open source</h2>
+                    <img src="images/front-end-conftocat.png">
+                </section>
+
+				<section>
+                    <h2>Cross Platform</h2>
+                    <img src="images/crossplatform.png">
+                </section>
+
+                <section>
+                    <h2>Performance</h2>
+                    <iframe id="performance" style="width:600px; height:500px;" data-chart></iframe>
+                </section>
+
+                <section>
+                    <h2>C# is a Modern Consistent Language</h2>
+                    <ul>
+                        <li>Async/Await</li>
+                        <li>Lambdas</li>
+                        <li>Generics</li>
+                        <li class="fragment">F# for the functional crowd</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Unit Testing &amp; Dependency Injection built in</h2>
+                    <p>Helps you fall intot the pit of success</p>
+                </section>
+
+                <section>
+                    <h2>Visual Studio Code</h2>
+                </section>
+                <section>
+                    <h2>Install dotnet</h2>
+                </section>
+
+                <section>
+                    <h2></h2>
+                </section>
+
+                <section>
+                    <h2>Enough already</h2>
+                    <h3>Show me the code</h3>
+                </section>
 			</div>
 		</div>
 
@@ -41,9 +90,38 @@
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+                    { src: 'plugin/chartjs/Chart.min.js'},
+                    { src: 'plugin/chartjs/charted.js'}, // This is the plugin
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
+				],
+
+                chart : {
+                    items : [
+                    {
+                        selector : "#performance",
+                        type : "bar",
+
+                        data : {
+
+                        labels: ["ASP.NET Core", "Scala", "NodeJS", "ASP.NET 4.6"],
+                        datasets: [
+                            {
+                            label: "Req/Sec",
+                            fillColor: "rgba(220,220,220,0.5)",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: [313001, 176509, 127017, 57843]
+                            }
+                        ]
+                        },
+                        options : {
+                        responsive : true
+                        }
+                    }
+                    ]
+                }
 			});
 		</script>
 	</body>
